@@ -1,27 +1,37 @@
 import React from 'react';
 import './App.css';
 import SignUp from './Components/SignUp.js'
+import LogIn from './Components/LogIn.js'
 import Main from './Containers/Main.js'
 
 class App extends React.Component {
   state = ({
-    loggedIn: true
+    loggedIn: false,
+    id: 0
   })
 
-  loggedIn = () => {
-    this.setState(prevState => ({ loggedIn: !prevState.loggedIn }))
+  loggedIn = (data) => {
+    this.setState(prevState => ({ loggedIn: !prevState.loggedIn, id: data.id }))
   }
 
   render() {
+    console.log(this.state)
+    
     return (
       <div className="App" >
         <header className="App-header" />
         {this.state.loggedIn ? (
         
-        <Main />
+        <Main id={this.state.id} />
         ) 
         : 
-        (<SignUp loggedIn= {this.loggedIn} />)}
+        (
+        <>
+        <LogIn loggedIn= {this.loggedIn} />
+        <br />
+        <SignUp  />
+        </>
+        )}
       </div>
     );
   }

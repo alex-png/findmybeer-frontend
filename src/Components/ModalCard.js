@@ -18,7 +18,7 @@ class ModalCard extends React.Component {
             <div style={this.whiteCard}>
                 <h1>Welcome, user_name!</h1>
                 <p>Please select your three most favorite alcoholic beverages.</p>
-                <Selector firstTimeSwitch={this.props.firstTimeSwitch}  options={["Margarita", "Pina Colada", "Old Fashion", "Guinness", "Blue Moon", "Coors Light", "Budweiser", "Red Wine", "White Wine"]} />
+                <Selector id={this.props.id}firstTimeSwitch={this.props.firstTimeSwitch}/>
 
             </div>
         )

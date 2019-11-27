@@ -16,7 +16,7 @@ class Modal extends React.Component{
     render(){ 
         return(
             <>
-            <ModalCard firstTimeSwitch={this.props.firstTimeSwitch} />
+            <ModalCard id={this.props.id} firstTimeSwitch={this.props.firstTimeSwitch} />
             <div style={this.blackBox}>
             </div>
             </>

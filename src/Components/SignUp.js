@@ -51,7 +51,6 @@ class SignUp extends React.Component {
             
             }//end of callback
             )//end of then
-            .then(this.props.loggedIn() )
 
 
 

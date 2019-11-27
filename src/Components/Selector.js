@@ -2,28 +2,32 @@ import React from 'react';
 
 
 class Selector extends React.Component {
-    
-  state = {value: []}
+
+  state = { value: [] }
 
   handleChange = (event) => {
     event.persist()
-    this.setState(prevState =>  {
-      console.log(event)
-      if(prevState.value.length === 3){
-        return({value: prevState.value})
-      }else{
-        return ( {value: [...prevState.value, event.target.value]})
+    if (this.state.value.includes(event.target) !== true) {
+
+      this.setState(prevState => {
+        if (prevState.value.length === 3){
+
+          return ({ value: prevState.value })
+        } else {
+          return ({ value: [...prevState.value, event.target.value] })
+        }
       }
+      )
+
     }
-    )
     console.log(this.state.value)
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
     console.log(this.state.value)
-    let formData = this.state.value;
-     
+    let formData = { user_id: this.props.id, data: this.state.value };
+
     let configObj = {
       method: "POST",
       headers: {
@@ -32,33 +36,28 @@ class Selector extends React.Component {
       },
       body: JSON.stringify(formData)
     };
-     
-    fetch("http://localhost:3000/users", configObj)
-    .then(res => res.json())
-    .then(console.log);
 
-
-
-
-
-
-
-
-    this.props.firstTimeSwitch()
+    fetch("http://localhost:3000/initlikedbeers", configObj)
+      .then(res => res.json())
+      .then(data => { this.props.firstTimeSwitch(data)  }       
+          );
   }
 
-  handleClick = (e)=>{
+  handleClick = (e) => {
     e.preventDefault()
-    this.setState({value: []})
-    
+    this.setState({ value: [] })
+
   }
+
+  options = [ {name: "Guinness Draught", id: 129}, {name: "Budweiser", id: 180}]
+  
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          <select value={this.state.value} onChange={this.handleChange} multiple={true} style={{width:'100px', height: '150px'}} >
-          {this.props.options.map(opt => <option key={this.props.options.indexOf(opt)} value={`${opt}`} style={{display: "flex", justifyContent: "center"}}>{`${opt}`}</option> )}
+          <select value={this.state.value} onChange={this.handleChange} multiple={true} style={{ width: '100px', height: '150px' }} >
+            {this.options.map(opt => <option key={opt.id} value={`${opt.id}`} style={{ display: "flex", justifyContent: "center" }}>{`${opt.name}`}</option>)}
           </select>
         </label>
         <br />
@@ -77,5 +76,4 @@ class Selector extends React.Component {
 
 
 
-export default Selector 
- 
+export default Selector
