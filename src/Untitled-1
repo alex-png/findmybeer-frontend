@@ -22,3 +22,10 @@
               .then(res => res.json())
               .then(console.log);
         }
+
+
+
+
+
+ace = .28 of sales
+1 kilo = 25,000

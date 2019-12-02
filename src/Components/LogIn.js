@@ -3,7 +3,8 @@ import React from 'react'
 class LogIn extends React.Component {
 
     state = ({
-        username: ''
+        username: '',
+        error: false
     })
 
     handleChange = (e) => {
@@ -26,9 +27,13 @@ class LogIn extends React.Component {
             .then(data => {
                 if(data.status === 200){
                     console.log(data)
+                    
                     this.props.loggedIn(data)
+
                 }else{
+                    this.setState({error: true})
                     console.log(data.error)
+                    
                 }
             }
                 
@@ -50,7 +55,7 @@ class LogIn extends React.Component {
             <form onSubmit={this.handleSubmit} >
                 <input placeholder= "Username..." onChange={this.handleChange} name= "username"/>
                 <button>Submit</button>
-        {this.state.error? (<p style={{ color:'red' }}> This username {this.state.error} Please try another. </p> ): null}
+        {this.state.error? (<p style={{ color:'red' }}> This username does not exist. Please try again. </p> ): null}
             </form>
             </div>
         )

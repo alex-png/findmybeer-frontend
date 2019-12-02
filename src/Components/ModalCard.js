@@ -16,10 +16,9 @@ class ModalCard extends React.Component {
         
         return (
             <div style={this.whiteCard}>
-                <h1>Welcome, user_name!</h1>
+                <h1>Welcome, {this.props.userInfo.name}!</h1>
                 <p>Please select your three most favorite alcoholic beverages.</p>
-                <Selector id={this.props.id}firstTimeSwitch={this.props.firstTimeSwitch}/>
-
+            <Selector firstTimeSwitch={this.props.firstTimeSwitch} id={this.props.id}/>
             </div>
         )
     }

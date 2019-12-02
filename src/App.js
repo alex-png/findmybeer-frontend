@@ -7,29 +7,48 @@ import Main from './Containers/Main.js'
 class App extends React.Component {
   state = ({
     loggedIn: false,
-    id: 0
-  })
+    id: 0,
+    name: "",
+    firstTime: null
+    })
 
-  loggedIn = (data) => {
-    this.setState(prevState => ({ loggedIn: !prevState.loggedIn, id: data.id }))
+  loggedInFirstTime = (data) => {
+    this.setState(prevState => ({
+      loggedIn: !prevState.loggedIn, 
+      id: data.id, 
+      name: data.name, 
+      firstTime: true
+    }))
   }
 
+  loggedInReturning = (data) => {
+    this.setState(prevState => ({ 
+      loggedIn: !prevState.loggedIn,
+      id: data.id, 
+      name: data.name, 
+      firstTime: false}))
+  }
+
+  firstTimeComplete = ()=>{
+    this.setState( prevState => ({firstTime: !prevState.firstTime})  )  
+  }
+
+
   render() {
-    console.log(this.state)
     
     return (
       <div className="App" >
         <header className="App-header" />
         {this.state.loggedIn ? (
         
-        <Main id={this.state.id} />
+        <Main id={this.state.id} userInfo={this.state} firstTimeComplete={this.firstTimeComplete} />
         ) 
         : 
         (
         <>
-        <LogIn loggedIn= {this.loggedIn} />
+        <LogIn loggedIn= {this.loggedInReturning} />
         <br />
-        <SignUp  />
+        <SignUp loggedIn={this.loggedInFirstTime} />
         </>
         )}
       </div>

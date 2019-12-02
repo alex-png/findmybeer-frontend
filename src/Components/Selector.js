@@ -5,6 +5,8 @@ class Selector extends React.Component {
 
   state = { value: [] }
 
+
+  //responsible for allowing selections
   handleChange = (event) => {
     event.persist()
     if (this.state.value.includes(event.target) !== true) {
@@ -23,6 +25,8 @@ class Selector extends React.Component {
     console.log(this.state.value)
   }
 
+
+  //will send selections to backend
   handleSubmit = (event) => {
     event.preventDefault();
     console.log(this.state.value)
@@ -39,20 +43,35 @@ class Selector extends React.Component {
 
     fetch("http://localhost:3000/initlikedbeers", configObj)
       .then(res => res.json())
-      .then(data => { this.props.firstTimeSwitch(data)  }       
+      .then(data => { 
+        this.props.firstTimeSwitch(data)
+        console.log(data)  
+      }       
           );
   }
 
+
+  //resets selector value to nothing
   handleClick = (e) => {
     e.preventDefault()
     this.setState({ value: [] })
 
   }
 
-  options = [ {name: "Guinness Draught", id: 129}, {name: "Budweiser", id: 180}]
+  //array of options 
+  options = [ 
+  {id:1, name: "Margarita"}, 
+  {id:2, name: "Coffee"}, 
+  {id: 3, name:"Old Fashioned"}, 
+  {id:4, name:"Chocolate"}, 
+  {id:5, name:"Pina Colada"},
+  {id:6, name: "Harry Potter"}
+  ]
   
 
+
   render() {
+    debugger
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
