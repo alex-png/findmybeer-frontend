@@ -1,6 +1,8 @@
 import './Main.css';
 import React from 'react'
 import Modal from '../Components/Modal'
+import LikeButton from '../Components/LikeButton'
+import DislikeButton from '../Components/DislikeButton'
 
 class Main extends React.Component {
     state = ({
@@ -55,18 +57,23 @@ class Main extends React.Component {
             </div>
 
             <div className="body"> 
-            {this.props.userInfo.firstTime? 
+            {
+                this.props.userInfo.firstTime? 
                 (<Modal id={this.props.userInfo.id} firstTimeSwitch={this.firstTimeSwitch} userInfo={this.props.userInfo}/>)
             :
-                (<><h1> Hey, {this.props.userInfo.name}! </h1> <p>you might like...</p></>) }
-                <h1 style={{fontSize:"5.5em"}} >{this.state.data.length > 0? this.state.data[0].name : 404}</h1>
+                (<>
+                    <h1 style={{marginBlockStart:"0em", marginBlockEnd:"0em"}}> Hey, {this.props.userInfo.name}! </h1>
+                    <p style={{color:"grey", marginBlockStart:"0.5em", marginBlockEnd:"0em"}}> you might like... </p>
+                </>)
+            }
+                <h1 style={{fontSize:"3.5em", marginBlockStart:"0em", marginBlockEnd:"0em"}} >{this.state.data.length > 0? this.state.data[0].name : 404}</h1>
                 <img src={this.state.data.length > 0? this.state.data[0].img_url : 404} alt= {this.state.data.length > 0? this.state.data[0].img_url : 404}/>
-                
-            
-            
-            <button onClick={this.handleClick} value="no"  > Sounds gross </button> 
             <br />
-            <button onClick={this.handleClick} value="yes"  >Interested!</button>
+            <LikeButton onClick={this.handleClick} />
+            <br />
+            <DislikeButton onClick={this.handleClick} value="no"  > Sounds gross </DislikeButton> 
+            <br />
+            
             </div>
             
             
