@@ -46,9 +46,8 @@ class Selector extends React.Component {
       .then(data => { 
         this.props.firstTimeSwitch(data)
         console.log(data)  
-      }       
-          );
-  }
+      })
+  }//
 
 
   //resets selector value to nothing

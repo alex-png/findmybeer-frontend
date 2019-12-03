@@ -11,31 +11,38 @@ class Main extends React.Component {
         this.props.firstTimeComplete()
     }
 
-    handleClick = (e)=>{
+    handleClick = (e) =>{
         e.preventDefault()
         if(e.target.value === "no"){
-            debugger
             this.setState(prevState=> ({data: prevState.data.slice(1)}))
         }else{
-            debugger
-            
 
+            let formData = { user_id: this.props.userInfo.id, beer_id: this.state.data[0].id };
 
+            let configObj = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(formData)
+            };
 
-
-
-
-
+            fetch("http://localhost:3000/likedbeer", configObj)
+                .then(res => res.json())
+                .then(data => {console.log("RECC BEER",data)})
+                .then(
+                    this.setState(prevState=> ({data: prevState.data.slice(1)}))
+                )
 
         }
-    }//end
+    }//end of function 
 
     render() { 
-        debugger
-        
+        console.log("data in state:",this.state.data)
         return (
             <>
-            {this.props.userInfo.firstTime? <Modal id={this.props.id} firstTimeSwitch={this.firstTimeSwitch} userInfo={this.props.userInfo}/> : <h1> Welcome, {this.props.userInfo.name}! </h1> }
+            {this.props.userInfo.firstTime? <Modal id={this.props.userInfo.id} firstTimeSwitch={this.firstTimeSwitch} userInfo={this.props.userInfo}/> : <h1> Welcome, {this.props.userInfo.name}! </h1> }
                 <h1>{this.state.data.length > 0? this.state.data[0].name : 404}</h1>
                  <img src={this.state.data.length > 0? this.state.data[0].img_url : 404} alt= {this.state.data.length > 0? this.state.data[0].img_url : 404}/>
                 
@@ -64,7 +71,13 @@ class Main extends React.Component {
 
             fetch("http://localhost:3000/reccomended_beers", configObj)
                 .then(res => res.json())
-                .then(data => console.log("RECCS", data))
+                .then(reccs => {
+                    if(reccs.length > 1){
+                        this.setState({data: reccs})
+                    }else{
+                     console.log(reccs)   
+                    }
+                })
         }
 
     }

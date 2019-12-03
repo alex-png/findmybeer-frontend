@@ -41,7 +41,7 @@ class App extends React.Component {
         <header className="App-header" />
         {this.state.loggedIn ? (
         
-        <Main id={this.state.id} userInfo={this.state} firstTimeComplete={this.firstTimeComplete} />
+        <Main userInfo={this.state} firstTimeComplete={this.firstTimeComplete} />
         ) 
         : 
         (
