@@ -6,10 +6,10 @@ import Main from './Containers/Main.js'
 
 class App extends React.Component {
   state = ({
-    loggedIn: false,
-    id: 0,
-    name: "",
-    firstTime: null
+    loggedIn: true,
+    id: 241,
+    name: "Alex",
+    firstTime: false
     })
 
   loggedInFirstTime = (data) => {
@@ -38,14 +38,14 @@ class App extends React.Component {
     
     return (
       <div className="App" >
-        <header className="App-header" />
-        {this.state.loggedIn ? (
         
-        <Main userInfo={this.state} firstTimeComplete={this.firstTimeComplete} />
-        ) 
-        : 
-        (
-        <>
+        {this.state.loggedIn ? (
+          
+          <Main userInfo={this.state} firstTimeComplete={this.firstTimeComplete} />
+          ) 
+          : 
+          (
+            <>
         <LogIn loggedIn= {this.loggedInReturning} />
         <br />
         <SignUp loggedIn={this.loggedInFirstTime} />

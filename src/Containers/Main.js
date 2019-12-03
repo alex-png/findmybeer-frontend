@@ -1,5 +1,7 @@
+import './Main.css';
 import React from 'react'
 import Modal from '../Components/Modal'
+
 class Main extends React.Component {
     state = ({
         data:[]
@@ -39,22 +41,44 @@ class Main extends React.Component {
     }//end of function 
 
     render() { 
-        console.log("data in state:",this.state.data)
-        return (
-            <>
-            {this.props.userInfo.firstTime? <Modal id={this.props.userInfo.id} firstTimeSwitch={this.firstTimeSwitch} userInfo={this.props.userInfo}/> : <h1> Welcome, {this.props.userInfo.name}! </h1> }
-                <h1>{this.state.data.length > 0? this.state.data[0].name : 404}</h1>
-                 <img src={this.state.data.length > 0? this.state.data[0].img_url : 404} alt= {this.state.data.length > 0? this.state.data[0].img_url : 404}/>
-                
-                <h2>BEER INFO:{this.state.data.length > 0? this.state.data[0].description : 404}  </h2>
-                <h2>BREWERY: {this.state.data.length > 0? this.state.data[0].brewery.name : 404} </h2>
-                <h2>brewery info: {this.state.data.length > 0? this.state.data[0].brewery.description : 404}   </h2>
-                <button onClick={this.handleClick} value="no"  > Sounds gross</button> <br />
-                <button onClick={this.handleClick} value="yes"  >Interested!</button>
-            </>)
-    } 
 
-    componentDidMount() {
+        return (
+            <div >
+            <div className="side-bar"> Hello </div>
+            <div className="header"></div>
+            <div className="beer-info"> 
+                <h2>
+                {this.state.data.length > 0? this.state.data[0].brewery.name: 404} says
+                </h2>
+                <p>{this.state.data.length > 0? this.state.data[0].description : 404}</p>
+            
+            </div>
+
+            <div className="body"> 
+            {this.props.userInfo.firstTime? 
+                (<Modal id={this.props.userInfo.id} firstTimeSwitch={this.firstTimeSwitch} userInfo={this.props.userInfo}/>)
+            :
+                (<><h1> Hey, {this.props.userInfo.name}! </h1> <p>you might like...</p></>) }
+                <h1 style={{fontSize:"5.5em"}} >{this.state.data.length > 0? this.state.data[0].name : 404}</h1>
+                <img src={this.state.data.length > 0? this.state.data[0].img_url : 404} alt= {this.state.data.length > 0? this.state.data[0].img_url : 404}/>
+                
+            
+            
+            <button onClick={this.handleClick} value="no"  > Sounds gross </button> 
+            <br />
+            <button onClick={this.handleClick} value="yes"  >Interested!</button>
+            </div>
+            
+            
+            </ div>
+            
+            )
+            
+            // <h2>brewery info {this.state.data.length > 0? this.state.data[0].brewery.description : 404}</h2>
+            
+        }// end of render 
+        
+        componentDidMount() {
         if (this.state.data.length < 1) {
             console.log("FETCH ME SOME RECCS")
 

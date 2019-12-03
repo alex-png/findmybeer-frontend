@@ -1,0 +1,51 @@
+/*    *******SIDE BAR BELOW***********      */
+.side-bar {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 10vw; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    left: 0;
+    background-color: #b0b0b0; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    }
+
+.body {
+    height: 85vh;
+    margin-left: 10vw;
+    margin-right: 20vw;
+    padding: 2%;
+    position: fixed;
+    background-size: cover;
+    overflow: auto;
+    width: 66vw;
+    }
+
+.beer-info{
+    height: 92vh; /* Full-height: remove this if you want "auto" height */
+    width: 20vw; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 5; /* Stay on top */
+    right: 0;
+    background-color: #1; /* Black */
+    overflow-y: scroll; /* Disable horizontal scroll */
+    overflow-x: hidden;
+    border-left-style:solid;
+    border-left-width:thin;
+    padding: 25px;
+    box-sizing: border-box;
+    font-size: 1.5em;
+    background-color: white;
+}
+
+.header {
+    background-color: #2f2f30;
+    min-height: 8vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    z-index: 5;
+    top: 0;
+    position: relative;
+  }
