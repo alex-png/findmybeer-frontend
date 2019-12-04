@@ -1,6 +1,6 @@
 
 .body {
-  background: url('/beer-bg.jpg');
+  background: url('/beer-bg.png');
   background-repeat: no-repeat;
   background-size: cover;
   height: 95vh;
@@ -12,21 +12,23 @@
 }
 
 .beer-info{
-    height: 92vh; /* Full-height: remove this if you want "auto" height */
-    width: 20vw; /* Set the width of the sidebar */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 2; /* Stay on top */
-    right: 0;
-    background-color: black; /* Black */
-    overflow-y: scroll; /* Disable horizontal scroll */
-    overflow-x: hidden;
-    border-left-style:solid;
-    border-left-width:thin;
-    padding: 25px;
-    box-sizing: border-box;
-    font-size: 1.5em;
-    background-color: white;
-    font-family: sans-serif;
+  height: 92vh;
+  width: 20vw;
+  position: fixed;
+  z-index: 2;
+  right: 0;
+  background-color: #404554;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border-left-style: solid;
+  border-left-width: thin;
+  padding: 1%;
+  box-sizing: border-box;
+  font-size: 1.5em;
+  background: linear-gradient(45deg, #4a4a4e, #454550);
+  font-family: sans-serif;
+  color: white;
+  border-color: #0000002b;
 }
 
 .header {
@@ -52,19 +54,22 @@
     
 /*    *******SIDE BAR BELOW***********      */
 .side-bar {
-        height: 100%; /* Full-height: remove this if you want "auto" height */
-        width: 10vw; /* Set the width of the sidebar */
-        position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-        z-index: 1; /* Stay on top */
-        left: 0;
-        background-color: #b0b0b0; /* Black */
-        overflow-x: hidden; /* Disable horizontal scroll */        
+  background: linear-gradient(45deg, #464650, #49494e);
+  height: 100%;
+  border-right: solid;
+  border-color: #0000001a;
+  width: 10vw;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  color: slategray;
+  overflow-x: hidden;
     }
 /* Style the buttons that are used to open the tab content */
 .side-bar button {
     display: block;
     background-color: inherit;
-    color: black;
+    color: white;
     padding: 22px 8px;
     width: 100%;
     border: none;
