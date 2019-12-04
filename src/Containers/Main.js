@@ -28,11 +28,25 @@ class Main extends React.Component {
 
         if (e.target.value === "dislike button") {
             console.log(this.state.data.length)
-            if(this.state.data.length <= 1){
-                this.fetchReccBeers()
-            }else{
-                this.setState(prevState => ({ data: prevState.data.slice(1) }))
-            }
+            let formData = { user_id: this.props.userInfo.id, beer_id: this.state.data[0].id };
+
+            let configObj = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(formData)
+            };
+
+            fetch("http://localhost:3000/dislikedbeer", configObj)
+                .then(res => res.json())
+                .then(this.state.data.length === 1? this.fetchReccBeers() : this.setState(prevState => ({ data: prevState.data.slice(1) })))
+            // if(this.state.data.length <= 1){
+            //     this.fetchReccBeers()
+            // }else{
+            //     this.setState(prevState => ({ data: prevState.data.slice(1) }))
+            // }
         } else if(e.target.value === "like button") {
             
             let formData = { user_id: this.props.userInfo.id, beer_id: this.state.data[0].id };
@@ -60,6 +74,7 @@ class Main extends React.Component {
 
 
     render = () => {
+        console.log("Current dataset",this.state.data)
         return (this.props.userInfo.firstTime ?
             (<>
                 <Modal />
@@ -111,6 +126,7 @@ class Main extends React.Component {
 
 
     fetchReccBeers = ()=>{
+        console.log("getting new beers!")
         let formData = { user_id: this.props.userInfo.id };
 
             let configObj = {
@@ -126,6 +142,7 @@ class Main extends React.Component {
                 .then(res => res.json())
                 .then(reccs => {
                     if(reccs.length > 1){
+                        console.log("new set of reccs!",  reccs)
                         this.setState({ data: reccs })
                     }else{
                         this.props.zeroBeerRenderQuizAgain()
