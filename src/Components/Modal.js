@@ -1,10 +1,9 @@
 import React from 'react'
-import ModalCard from './ModalCard.js'
 
 class Modal extends React.Component{
-     blackBox = {
+    blackBox = {
         background: "rgba(0,0,0,1)",
-        position: "fixed",
+        position: "absolute",
         top: "0",
         left: "0",
         width: "100vw",
@@ -12,18 +11,9 @@ class Modal extends React.Component{
         zIndex: "2",
         opacity: 0.5
     }
-
-    render(){ 
-        return(
-            <>
-            <ModalCard id={this.props.id} firstTimeSwitch={this.props.firstTimeSwitch} userInfo={this.props.userInfo} />
-            <div style={this.blackBox}>
-            </div>
-            </>
-        )
+    render = ()=>{
+        return (<div style={this.blackBox}> </div>)
     }
-
-
 
 }
 

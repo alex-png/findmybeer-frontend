@@ -22,4 +22,7 @@
   color: #09d3ac;
 }
 
-
+html, body {
+  height: 100%;
+  overflow: hidden;
+}

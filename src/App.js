@@ -6,9 +6,9 @@ import Main from './Containers/Main.js'
 
 class App extends React.Component {
   state = ({
-    loggedIn: true,
-    id: 241,
-    name: "Alex",
+    loggedIn: false,
+    id: 0,
+    name: "",
     firstTime: false
     })
 
@@ -29,31 +29,41 @@ class App extends React.Component {
       firstTime: false}))
   }
 
-  firstTimeComplete = ()=>{
+  firstTimeComplete = () =>{
     this.setState( prevState => ({firstTime: !prevState.firstTime})  )  
   }
 
 
-  render() {
-    
+  render = () => {
+
     return (
       <div className="App" >
-        
         {this.state.loggedIn ? (
-          
           <Main userInfo={this.state} firstTimeComplete={this.firstTimeComplete} />
-          ) 
-          : 
+        )
+          :
           (
             <>
-        <LogIn loggedIn= {this.loggedInReturning} />
-        <br />
-        <SignUp loggedIn={this.loggedInFirstTime} />
-        </>
-        )}
+              <LogIn loggedIn={this.loggedInReturning} />
+              <br />
+              <SignUp loggedIn={this.loggedInFirstTime} />
+            </>
+          )}
       </div>
     );
   }
+
+
+
+  // componentDidMount() {
+  //   const script = document.createElement("script");
+  //   script.async = true;
+  //   script.src = "https://kit.fontawesome.com/b6207d2735.js";
+
+  //   // For body
+  //   document.body.appendChild(script);
+  // }
+ 
 
 
 }//end of App

@@ -1,33 +1,21 @@
-/*    *******SIDE BAR BELOW***********      */
-.side-bar {
-    height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 10vw; /* Set the width of the sidebar */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 1; /* Stay on top */
-    left: 0;
-    background-color: #b0b0b0; /* Black */
-    overflow-x: hidden; /* Disable horizontal scroll */
-    }
 
 .body {
-    height: 85vh;
+    background-color: white;
+    height: 95vh;
     margin-left: 10vw;
     margin-right: 20vw;
-    padding: 2%;
-    position: fixed;
-    background-size: cover;
-    overflow: auto;
-    width: 66vw;
+    overflow: scroll;
     font-family: sans-serif;
-    }
+    z-index: 3;
+}
 
 .beer-info{
     height: 92vh; /* Full-height: remove this if you want "auto" height */
     width: 20vw; /* Set the width of the sidebar */
     position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 5; /* Stay on top */
+    z-index: 2; /* Stay on top */
     right: 0;
-    background-color: #1; /* Black */
+    background-color: black; /* Black */
     overflow-y: scroll; /* Disable horizontal scroll */
     overflow-x: hidden;
     border-left-style:solid;
@@ -41,14 +29,68 @@
 
 .header {
     background-color: #2f2f30;
-    min-height: 8vh;
+    height: 8vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
     font-size: calc(10px + 2vmin);
     color: white;
-    z-index: 5;
-    top: 0;
-    position: relative;
+    z-index: 10;
+    width: 100em;}
+
+.header-img {
+    height: 2.3em;
+    border-radius: .2em;
+    margin-left: .2em;
+}
+
+  .beer-img{
+      height: 30em;
+      width: 30em;
+    }
+    
+/*    *******SIDE BAR BELOW***********      */
+.side-bar {
+        height: 100%; /* Full-height: remove this if you want "auto" height */
+        width: 10vw; /* Set the width of the sidebar */
+        position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+        z-index: 1; /* Stay on top */
+        left: 0;
+        background-color: #b0b0b0; /* Black */
+        overflow-x: hidden; /* Disable horizontal scroll */        
+    }
+/* Style the buttons that are used to open the tab content */
+.side-bar button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 8px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 2em;
   }
+  
+  /* Change background color of buttons on hover */
+  .side-bar button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current "side-bar button" class */
+  .side-bar button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the side-bar content */
+  .side-barcontent {
+    float: left;
+    padding: 0px 12px;
+    border: 1px solid #ccc;
+    width: 70%;
+    border-left: none;
+    height: 300px;
+  }
+  
  

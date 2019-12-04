@@ -16,7 +16,6 @@ input[type="checkbox"] {
 
 input[type="checkbox"] + label {
 	position: absolute;
-	z-index: 100;
 	overflow: hidden;
 	height: 6em;
 	width: 6em;
@@ -36,7 +35,7 @@ input[type="checkbox"] + label {
 
 input[type="checkbox"] + label:before {
 	content: '';
-	z-index: -1;
+	z-index: 1;
 	position: absolute;
 	background: rgb(220, 72, 127));
 	width: 100%;

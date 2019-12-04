@@ -62,7 +62,7 @@ class SignUp extends React.Component {
 
     
 
-    render() {
+    render = ()=>{
                 return (
             <div>
                 <h1>Create New User! </h1>

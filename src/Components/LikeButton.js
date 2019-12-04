@@ -1,5 +1,5 @@
 import React from 'react'
-import "./LikeButton.css"
+import "./Styles/LikeButton.css"
 
 export default function LikeButton() {
     return (<>

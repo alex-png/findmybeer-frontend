@@ -1,30 +1,24 @@
 import React from 'react'
 import Selector from './Selector.js'
-
+import WhiteCard from './WhiteCard.js'
 class ModalCard extends React.Component {
-    whiteCard = {
-        background: "rgba(255,255,255)",
-        position: "fixed",
-        top: "15%",
-        left: "25%",
-        width: "50vw",
-        height: "75vh",
-        zIndex: "3",
-        opacity: 1
-    }
-    render() {
-        
+    
+
+    render = ()=>{
         return (
-            <div style={this.whiteCard}>
-                <h1>Welcome, {this.props.userInfo.name}!</h1>
-                <p>Please select your three most favorite alcoholic beverages.</p>
-            <Selector firstTimeSwitch={this.props.firstTimeSwitch} id={this.props.id}/>
-            </div>
+        <WhiteCard>
+            <div style={{padding: ".8%"}}>
+            <h1>Welcome, {this.props.userInfo.name}!</h1>
+            <p>Please select your three most favorite alcoholic beverages.</p>
+        <Selector firstTimeSwitch={this.props.firstTimeSwitch} id={this.props.id}/> 
+        </div>
+        </WhiteCard>
         )
     }
 
 
-}
+}// end of class
+
 
 
 
