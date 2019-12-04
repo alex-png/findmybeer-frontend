@@ -27,8 +27,14 @@ class Main extends React.Component {
         e.preventDefault()
 
         if (e.target.value === "dislike button") {
-            this.setState(prevState => ({ data: prevState.data.slice(1) }))
+            console.log(this.state.data.length)
+            if(this.state.data.length <= 1){
+                this.fetchReccBeers()
+            }else{
+                this.setState(prevState => ({ data: prevState.data.slice(1) }))
+            }
         } else if(e.target.value === "like button") {
+            
             let formData = { user_id: this.props.userInfo.id, beer_id: this.state.data[0].id };
 
             let configObj = {
@@ -42,10 +48,7 @@ class Main extends React.Component {
 
             fetch("http://localhost:3000/likedbeer", configObj)
                 .then(res => res.json())
-                .then(data => { console.log("RECC BEER", data) })
-                .then(
-                    this.setState(prevState => ({ data: prevState.data.slice(1) }))
-                )
+                .then( this.state.data.length === 1? this.fetchReccBeers() : this.setState(prevState => ({ data: prevState.data.slice(1) })))
 
         }
         else{
@@ -57,7 +60,6 @@ class Main extends React.Component {
 
 
     render = () => {
-
         return (this.props.userInfo.firstTime ?
             (<>
                 <Modal />
@@ -108,33 +110,8 @@ class Main extends React.Component {
     }// end of render 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    componentDidMount() {
-        if (this.state.data.length < 1) {
-            console.log("FETCH ME SOME RECCS")
-
-            let formData = { user_id: this.props.userInfo.id };
+    fetchReccBeers = ()=>{
+        let formData = { user_id: this.props.userInfo.id };
 
             let configObj = {
                 method: "POST",
@@ -148,12 +125,21 @@ class Main extends React.Component {
             fetch("http://localhost:3000/reccomended_beers", configObj)
                 .then(res => res.json())
                 .then(reccs => {
-                    if (reccs.length > 1) {
+                    if(reccs.length > 1){
                         this.setState({ data: reccs })
-                    } else {
-                        console.log(reccs)
+                    }else{
+                        this.props.zeroBeerRenderQuizAgain()
                     }
                 })
+    }
+
+
+
+    componentDidMount = ()=>{
+        if (this.props.userInfo.firstTime === false) {
+            console.log("FETCH ME SOME RECCS")
+            this.fetchReccBeers()
+            
         }
 
 

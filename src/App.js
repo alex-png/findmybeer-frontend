@@ -33,13 +33,17 @@ class App extends React.Component {
     this.setState( prevState => ({firstTime: !prevState.firstTime})  )  
   }
 
+  zeroBeerRenderQuizAgain = () => {
+    this.setState(prevState => ({firstTime: !prevState.firstTime}) )
+  }
+
 
   render = () => {
 
     return (
       <div className="App" >
         {this.state.loggedIn ? (
-          <Main userInfo={this.state} firstTimeComplete={this.firstTimeComplete} />
+          <Main userInfo={this.state} firstTimeComplete={this.firstTimeComplete}  zeroBeerRenderQuizAgain={this.zeroBeerRenderQuizAgain}  />
         )
           :
           (
