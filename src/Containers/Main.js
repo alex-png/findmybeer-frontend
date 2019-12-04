@@ -6,6 +6,7 @@ import Body from '../Components/Body.js'
 import Header from '../Components/Header.js'
 import SideNavBar from '../Components/SideNavBar.js'
 import InfoBar from '../Components/InfoBar.js'
+import Card from '../Components/Card.js'
 // import LikeButton from '../Components/LikeButton'
 // import DislikeButton from '../Components/DislikeButton'
 
@@ -23,7 +24,7 @@ class Main extends React.Component {
 
     handleClick = (e) => {
         e.preventDefault()
-        
+
         if (e.target.value === "no") {
             this.setState(prevState => ({ data: prevState.data.slice(1) }))
         } else {
@@ -60,27 +61,41 @@ class Main extends React.Component {
             :
             (<>
                 <Header />
+
+                {this.state.data.length > 0? (
+                    <>
                 <SideNavBar />
 
                 <InfoBar>
-                    <h2>{this.state.data.length > 0 ? this.state.data[0].brewery.name : 404} says </h2>
-                    <p>{this.state.data.length > 0 ? this.state.data[0].description : 404}</p>
+                    <h2>{this.state.data[0].brewery.name} says </h2>
+                    <p>{this.state.data[0].description}</p>
                 </InfoBar>
 
                 <Body>
-                    <>
+
                     <h1 style={{ marginBlockStart: "0em", marginBlockEnd: "0em" }}> Hey, {this.props.userInfo.name}! </h1>
                     <p style={{ color: "grey", marginBlockStart: "0.5em", marginBlockEnd: "0em" }}> you might like... </p>
-                    <h1>{this.state.data.length > 0 ? this.state.data[0].name : 404}</h1>
-                    {this.state.data.length > 0 ? <img className="beerImg" src={this.state.data[0].img_url} alt={this.state.data[0].name} /> : 404}
-                    <br />
-                    <button value="no"  onClick={this.handleClick}> NOPE</button>
-                    <button value="yes" onClick={this.handleClick}>YESSIR</button>
 
-                    {/* <LikeButton onClick={this.handleClick}/> */}
+                    
+                        <Card
+                            beerName={this.state.data[0].name}
+                            brewery={this.state.data[0].brewery.name}
+                            img={this.state.data[0].img_url}
+                        />
+                    
+
                     <br />
-                    </>
+                    <button value="no" onClick={this.handleClick}> NOPE</button>
+                    <button value="yes" onClick={this.handleClick}>YESSIR</button>
+                    {/* <LikeButton onClick={this.handleClick}/> 
+                    <br /> */}
                 </ Body>
+                </>
+                )
+                : 
+                null  
+                }
+                
 
             </>)
         )
