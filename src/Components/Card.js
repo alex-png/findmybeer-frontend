@@ -14,8 +14,8 @@ export default function Card(props) {
         <div className="card">
             <img src={props.img} alt="beer img" style={{width:"100%"}} />
             <div className="container">
-                <h4><b>{props.beerName}</b></h4>
-                <p>Description</p>
+                <h1><b>{props.beerName}</b></h1>
+                <h3>{props.brewery}</h3>
             </div>
         </div>
         </div>

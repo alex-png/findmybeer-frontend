@@ -13,7 +13,8 @@ import Card from '../Components/Card.js'
 
 class Main extends React.Component {
     state = ({
-        data: []
+        data: [],
+        infoValue: "description"
     })
 
 
@@ -25,9 +26,9 @@ class Main extends React.Component {
     handleClick = (e) => {
         e.preventDefault()
 
-        if (e.target.value === "no") {
+        if (e.target.value === "dislike button") {
             this.setState(prevState => ({ data: prevState.data.slice(1) }))
-        } else {
+        } else if(e.target.value === "like button") {
             let formData = { user_id: this.props.userInfo.id, beer_id: this.state.data[0].id };
 
             let configObj = {
@@ -47,6 +48,11 @@ class Main extends React.Component {
                 )
 
         }
+        else{
+            this.setState({
+                infoValue: e.target.value
+            })
+        }
     }//end of function 
 
 
@@ -61,14 +67,12 @@ class Main extends React.Component {
             :
             (<>
                 <Header />
+                <SideNavBar onClick={this.handleClick} />
 
                 {this.state.data.length > 0? (
                     <>
-                <SideNavBar />
 
-                <InfoBar>
-                    <h2>{this.state.data[0].brewery.name} says </h2>
-                    <p>{this.state.data[0].description}</p>
+                <InfoBar info={this.state}>
                 </InfoBar>
 
                 <Body>
@@ -85,8 +89,8 @@ class Main extends React.Component {
                     
 
                     <br />
-                    <button value="no" onClick={this.handleClick}> NOPE</button>
-                    <button value="yes" onClick={this.handleClick}>YESSIR</button>
+                    <button value="dislike button" onClick={this.handleClick}> NOPE</button>
+                    <button value="like button" onClick={this.handleClick}>YESSIR</button>
                     {/* <LikeButton onClick={this.handleClick}/> 
                     <br /> */}
                 </ Body>
@@ -102,6 +106,29 @@ class Main extends React.Component {
 
 
     }// end of render 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     componentDidMount() {
         if (this.state.data.length < 1) {

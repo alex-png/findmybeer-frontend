@@ -1,12 +1,14 @@
 
 .body {
-    background-color: white;
-    height: 95vh;
-    margin-left: 10vw;
-    margin-right: 20vw;
-    overflow: scroll;
-    font-family: sans-serif;
-    z-index: 3;
+  background: url('/beer-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 95vh;
+  margin-left: 10vw;
+  margin-right: 20vw;
+  overflow: scroll;
+  font-family: sans-serif;
+  z-index: 3;
 }
 
 .beer-info{
@@ -70,7 +72,8 @@
     text-align: center;
     cursor: pointer;
     transition: 0.3s;
-    font-size: 2em;
+    font-size: 1.5em;
+    overflow: break-word;
   }
   
   /* Change background color of buttons on hover */
