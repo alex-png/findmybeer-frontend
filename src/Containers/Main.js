@@ -3,6 +3,9 @@ import React from 'react'
 import Modal from '../Components/Modal'
 import ModalCard from '../Components/ModalCard.js'
 import Body from '../Components/Body.js'
+import Header from '../Components/Header.js'
+import SideNavBar from '../Components/SideNavBar.js'
+import InfoBar from '../Components/InfoBar.js'
 // import LikeButton from '../Components/LikeButton'
 // import DislikeButton from '../Components/DislikeButton'
 
@@ -56,34 +59,13 @@ class Main extends React.Component {
             </>)
             :
             (<>
-                <div className="header"> 
-                <img src="/logo.png"  style={{ height: "2.3em", borderRadius: ".2em", marginLeft: ".2em"}} alt="logo" />
-                FIND<h1 style={{fontSize: "1.3em"}}>MY</h1>BEER
-                <form><input style={{
-                        borderRadius: ".7em",
-                        borderStyle: "none",
-                        height: "1.2em",
-                        width: "5em",
-                        backgroundColor: "white",
-                        textAlign: "center",
-                        fontSize: "x-large",
-                        color: "grey",
-                        marginLeft: "1em"                    
-                    }} value= "search..." /></form>
-                </div>
+                <Header />
+                <SideNavBar />
 
-                <div className="side-bar">
-                <button className="sideBarLinks" >brewery</button>
-                <button className="sideBarLinks" >style</button>
-                <button className="sideBarLinks" >reviews</button>
-                <button className="sideBarLinks" >my liked beers</button>
-
-                </div>
-
-                <div className="beer-info">
+                <InfoBar>
                     <h2>{this.state.data.length > 0 ? this.state.data[0].brewery.name : 404} says </h2>
                     <p>{this.state.data.length > 0 ? this.state.data[0].description : 404}</p>
-                </div>
+                </InfoBar>
 
                 <Body>
                     <>
