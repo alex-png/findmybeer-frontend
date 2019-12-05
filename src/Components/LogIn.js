@@ -28,6 +28,7 @@ class LogIn extends React.Component {
                 }else{
                     console.log("error!", data)
                     
+                    this.setState({error: true})
                     
                 }
             }

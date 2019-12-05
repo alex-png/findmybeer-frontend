@@ -93,11 +93,11 @@ class Main extends React.Component {
             :
             (<>
                 <Header> 
-                <button style={{background: "inherit", color: "white", fontSize: "large", borderStyle: "none"}} 
+                {/* <button style={{background: "inherit", color: "white", fontSize: "large", borderStyle: "none"}} 
                 onClick={this.handleClick} className="sideBarLinks" 
                 value="liked beers">
                     liked beers
-                </button>
+                </button> */}
                 </Header>
 
                 <SideNavBar onClick={this.handleClick} />
