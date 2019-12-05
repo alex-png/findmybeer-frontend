@@ -3,7 +3,8 @@ import './App.css';
 import SignUp from './Components/SignUp.js'
 import LogIn from './Components/LogIn.js'
 import Main from './Containers/Main.js'
-
+import WhiteCard from './Components/WhiteCard';
+import './Containers/Main.css'
 class App extends React.Component {
   state = ({
     loggedIn: false,
@@ -46,11 +47,19 @@ class App extends React.Component {
           <Main userInfo={this.state} firstTimeComplete={this.firstTimeComplete}  zeroBeerRenderQuizAgain={this.zeroBeerRenderQuizAgain}  />
         )
           :
-          (
-            <>
+          (<>
+            <div className="header"> 
+            <img src="/logo.png"  style={{ height: "2.3em", borderRadius: ".2em", marginLeft: ".2em"}} alt="logo" />
+            FIND<h1 style={{fontSize: "1.3em"}}>MY</h1>BEER
+            </div>
+
+            <WhiteCard >
+              <h1>you've had your last PBR.</h1>
               <LogIn loggedIn={this.loggedInReturning} />
-              <br />
+              <p>or...</p>
               <SignUp loggedIn={this.loggedInFirstTime} />
+
+            </WhiteCard>
             </>
           )}
       </div>

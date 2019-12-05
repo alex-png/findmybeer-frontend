@@ -2,7 +2,8 @@ import React from 'react'
 
 export default class WhiteCard extends React.Component{
     whiteCard = {
-    backgroundColor: "white",
+    borderRadius: "10%",
+    backgroundColor: "rgba(50, 50, 64, 0.91)",
     backgroundSize: "contain",
     position: "fixed",
     top: "15%",
@@ -12,8 +13,11 @@ export default class WhiteCard extends React.Component{
     zIndex: "4",
     opacity: "1",
     textAlign: "center",
-    fontColor: "black",
-    boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
+    color: "white",
+    boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-evenly"
     }
 
     render = ()=>{

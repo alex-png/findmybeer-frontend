@@ -94,8 +94,8 @@ class Main extends React.Component {
 
                 <Body>
 
-                    <h1 style={{ marginBlockStart: "0em", marginBlockEnd: "0em" }}> Hey, {this.props.userInfo.name}! </h1>
-                    <p style={{ color: "grey", marginBlockStart: "0.5em", marginBlockEnd: "0em" }}> you might like... </p>
+                    <h1 style={{ marginBlockStart: "0em", marginBlockEnd: "0em", color:"white" }}> Hey, {this.props.userInfo.name}! </h1>
+                    <p style={{ color: "grey", marginBlockStart: "0.5em" }}> you might like... </p>
 
                     
                         <Card

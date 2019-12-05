@@ -74,7 +74,12 @@ class Selector extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          <select value={this.state.value} onChange={this.handleChange} multiple={true} style={{ width: '100px', height: '150px' }} >
+          <select value={this.state.value} onChange={this.handleChange} multiple={true} style={{ 
+                width: "10rem",
+                height: "10rem",
+                borderRadius: "10%",
+                fontSize: "large",
+                overflow: "auto"}} >
             {this.options.map(opt => <option key={opt.id} value={`${opt.id}`} style={{ display: "flex", justifyContent: "center" }}>{`${opt.name}`}</option>)}
           </select>
         </label>

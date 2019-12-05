@@ -51,7 +51,7 @@ class LogIn extends React.Component {
     render = () =>{
                 return (
             <div>
-                <h1>Log In Existing User! </h1>
+                <h1>log in </h1>
             <form onSubmit={this.handleSubmit} >
                 <input placeholder= "Username..." onChange={this.handleChange} name= "username"/>
                 <button>Submit</button>
