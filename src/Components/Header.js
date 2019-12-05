@@ -10,6 +10,11 @@ export default class Header extends React.Component{
         <div className="header"> 
                 <img src="/logo.png"  style={{ height: "2.3em", borderRadius: ".2em", marginLeft: ".2em"}} alt="logo" />
                 FIND<h1 style={{fontSize: "1.3em"}}>MY</h1>BEER
-                </div>)
+                <div style={{display: "flex", marginLeft: "2em", color: "grey"}}>
+                {
+                this.props.children
+                }
+                </div>
+        </div>)
     }
 }

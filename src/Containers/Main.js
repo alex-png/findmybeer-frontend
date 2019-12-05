@@ -14,7 +14,8 @@ import Card from '../Components/Card.js'
 class Main extends React.Component {
     state = ({
         data: [],
-        infoValue: "description"
+        infoValue: "description",
+        likedBeers: false
     })
 
 
@@ -27,7 +28,6 @@ class Main extends React.Component {
         e.preventDefault()
 
         if (e.target.value === "dislike button") {
-            console.log(this.state.data.length)
             let formData = { user_id: this.props.userInfo.id, beer_id: this.state.data[0].id };
 
             let configObj = {
@@ -65,6 +65,16 @@ class Main extends React.Component {
                 .then( this.state.data.length === 1? this.fetchReccBeers() : this.setState(prevState => ({ data: prevState.data.slice(1) })))
 
         }
+        else if(e.target.value === "liked beers"){
+            debugger
+            if(this.props.userInfo.user.liked_beers){
+                console.log("beers",this.props.userInfo.user)
+                this.setState( prevState => ({likedBeers: !prevState.likedBeers})
+                )
+            }else{
+                alert("You need to like some beers first!")
+            }
+        }
         else{
             this.setState({
                 infoValue: e.target.value
@@ -74,7 +84,6 @@ class Main extends React.Component {
 
 
     render = () => {
-        console.log("Current dataset",this.state.data)
         return (this.props.userInfo.firstTime ?
             (<>
                 <Modal />
@@ -83,12 +92,19 @@ class Main extends React.Component {
             </>)
             :
             (<>
-                <Header />
+                <Header> 
+                <button style={{background: "inherit", color: "white", fontSize: "large", borderStyle: "none"}} 
+                onClick={this.handleClick} className="sideBarLinks" 
+                value="liked beers">
+                    liked beers
+                </button>
+                </Header>
+
                 <SideNavBar onClick={this.handleClick} />
 
                 {this.state.data.length > 0? (
                     <>
-
+                {this.state.likedBeers? <Card> </Card> : null}
                 <InfoBar info={this.state}>
                 </InfoBar>
 
@@ -126,7 +142,6 @@ class Main extends React.Component {
 
 
     fetchReccBeers = ()=>{
-        console.log("getting new beers!")
         let formData = { user_id: this.props.userInfo.id };
 
             let configObj = {
@@ -142,7 +157,6 @@ class Main extends React.Component {
                 .then(res => res.json())
                 .then(reccs => {
                     if(reccs.length > 1){
-                        console.log("new set of reccs!",  reccs)
                         this.setState({ data: reccs })
                     }else{
                         this.props.zeroBeerRenderQuizAgain()
@@ -154,7 +168,6 @@ class Main extends React.Component {
 
     componentDidMount = ()=>{
         if (this.props.userInfo.firstTime === false) {
-            console.log("FETCH ME SOME RECCS")
             this.fetchReccBeers()
             
         }

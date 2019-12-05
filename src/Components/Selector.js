@@ -22,14 +22,12 @@ class Selector extends React.Component {
       )
 
     }
-    console.log(this.state.value)
   }
 
 
   //will send selections to backend
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state.value)
     let formData = { user_id: this.props.id, data: this.state.value };
 
     let configObj = {
@@ -45,7 +43,6 @@ class Selector extends React.Component {
       .then(res => res.json())
       .then(data => { 
         this.props.firstTimeSwitch(data)
-        console.log(data)  
       })
   }//
 

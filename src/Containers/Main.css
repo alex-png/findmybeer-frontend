@@ -101,4 +101,6 @@
     height: 300px;
   }
   
- 
+ .p :hover{
+  background-color: #ddd;
+ }

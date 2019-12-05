@@ -10,7 +10,8 @@ class App extends React.Component {
     loggedIn: false,
     id: 0,
     name: "",
-    firstTime: false
+    firstTime: false,
+    user: null 
     })
 
   loggedInFirstTime = (data) => {
@@ -23,11 +24,13 @@ class App extends React.Component {
   }
 
   loggedInReturning = (data) => {
+    console.log(data)
     this.setState(prevState => ({ 
       loggedIn: !prevState.loggedIn,
       id: data.id, 
       name: data.name, 
-      firstTime: false}))
+      firstTime: false,  
+      user: data}))
   }
 
   firstTimeComplete = () =>{

@@ -3,7 +3,6 @@ import React from 'react'
 class LogIn extends React.Component {
 
     state = ({
-        username: '',
         error: false
     })
 
@@ -18,21 +17,17 @@ class LogIn extends React.Component {
     handleSubmit = (e) => {
 
         e.preventDefault()
-        const username = this.state.username.replace(/\s/g, '')
-        
-        console.log("GETTING TO DATABASE!")
-     
+        const username = this.state.username.replace(/\s/g, '')     
         fetch(`http://localhost:3000/users/${username}`)
             .then(res => res.json())
             .then(data => {
-                if(data.status === 200){
-                    console.log(data)
+                if(data.id) {
                     
                     this.props.loggedIn(data)
 
                 }else{
-                    this.setState({error: true})
-                    console.log(data.error)
+                    console.log("error!", data)
+                    
                     
                 }
             }
