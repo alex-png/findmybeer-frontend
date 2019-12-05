@@ -19,4 +19,6 @@ img {
   
 .container {
     padding: 2px 16px;
+    height: 10em;
+    overflow: scroll;
   }

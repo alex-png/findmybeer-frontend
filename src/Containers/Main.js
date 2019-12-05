@@ -117,13 +117,15 @@ class Main extends React.Component {
                         <Card
                             beerName={this.state.data[0].name}
                             brewery={this.state.data[0].brewery.name}
-                            img={this.state.data[0].img_url}
-                        />
+                            img={this.state.data[0].img_url}> 
+                            <b>Style:</b> {this.state.data[0].style.name}
+                            <br />
+                            <b>ABV:</b> {this.state.data[0].abv}% </Card>
                     
 
                     <br />
-                    <button value="dislike button" onClick={this.handleClick}> NOPE</button>
-                    <button value="like button" onClick={this.handleClick}>YESSIR</button>
+                    <button style={{background: "red", fontSize: "large", borderRadius: "10%", color: "white"}}   value="dislike button" onClick={this.handleClick}> NOPE</button>
+                    <button style={{background: "greenyellow", fontSize: "large", borderRadius: "10%", color: "black"}} value="like button" onClick={this.handleClick}>YESSIR</button>
                     {/* <LikeButton onClick={this.handleClick}/> 
                     <br /> */}
                 </ Body>

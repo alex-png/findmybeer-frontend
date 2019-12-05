@@ -16,6 +16,7 @@ export default function Card(props) {
             <div className="container">
                 <h1><b>{props.beerName}</b></h1>
                 <h3>{props.brewery}</h3>
+                    <p>{props.children}</p>
             </div>
         </div>
         </div>
