@@ -55,13 +55,16 @@ class Selector extends React.Component {
   }
 
   //array of options 
-  options = [ 
+  options = [
+  {id:8, name: "Berries"},
   {id:1, name: "Margarita"}, 
-  {id:2, name: "Coffee"}, 
-  {id: 3, name:"Old Fashioned"}, 
+  {id:6, name: "Harry Potter"},
+  {id:2, name: "Coffee"},
+  {id: 3, name:"Whiskey"},
+  {id:7, name:"Wine"},
   {id:4, name:"Chocolate"}, 
   {id:5, name:"Pina Colada"},
-  {id:6, name: "Harry Potter"}
+  {id: 9, name: "Orange"}
   ]
   
 
@@ -73,7 +76,7 @@ class Selector extends React.Component {
         <label>
           <select value={this.state.value} onChange={this.handleChange} multiple={true} style={{ 
                 width: "10rem",
-                height: "10rem",
+                height: "15rem",
                 borderRadius: "10%",
                 fontSize: "large",
                 overflow: "auto"}} >
