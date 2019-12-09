@@ -56,7 +56,6 @@ class Selector extends React.Component {
 
   //array of options 
   options = [
-  {id:8, name: "Berries"},
   {id:1, name: "Margarita"}, 
   {id:6, name: "Harry Potter"},
   {id:2, name: "Coffee"},

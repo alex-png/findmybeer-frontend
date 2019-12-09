@@ -9,7 +9,7 @@ class ModalCard extends React.Component {
         <WhiteCard>
             <div style={{padding: ".8%"}}>
             <h1>Welcome, {this.props.userInfo.name}!</h1>
-            <p>Please select your three most favorite alcoholic beverages.</p>
+            <p>Choose <b>three </b> favorites! </p>
         <Selector firstTimeSwitch={this.props.firstTimeSwitch} id={this.props.id}/> 
         </div>
         </WhiteCard>
