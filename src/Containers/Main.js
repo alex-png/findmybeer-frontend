@@ -15,7 +15,7 @@ class Main extends React.Component {
     state = ({
         data: [],
         infoValue: "description",
-        likedBeers: false
+        userHaslikedBeers: false
     })
 
 
@@ -41,14 +41,14 @@ class Main extends React.Component {
 
             fetch("http://localhost:3000/dislikedbeer", configObj)
                 .then(res => res.json())
-                .then(this.state.data.length === 1? this.fetchReccBeers() : this.setState(prevState => ({ data: prevState.data.slice(1) })))
+                .then(this.state.data.length === 1 ? this.fetchReccBeers() : this.setState(prevState => ({ data: prevState.data.slice(1) })))
             // if(this.state.data.length <= 1){
             //     this.fetchReccBeers()
             // }else{
             //     this.setState(prevState => ({ data: prevState.data.slice(1) }))
             // }
-        } else if(e.target.value === "like button") {
-            
+        } else if (e.target.value === "like button") {
+
             let formData = { user_id: this.props.userInfo.id, beer_id: this.state.data[0].id };
 
             let configObj = {
@@ -62,20 +62,19 @@ class Main extends React.Component {
 
             fetch("http://localhost:3000/likedbeer", configObj)
                 .then(res => res.json())
-                .then( this.state.data.length === 1? this.fetchReccBeers() : this.setState(prevState => ({ data: prevState.data.slice(1) })))
+                .then(this.state.data.length === 1 ? this.fetchReccBeers() : this.setState(prevState => ({ data: prevState.data.slice(1) })))
 
         }
-        else if(e.target.value === "liked beers"){
-            debugger
-            if(this.props.userInfo.user.liked_beers){
-                console.log("beers",this.props.userInfo.user)
-                this.setState( prevState => ({likedBeers: !prevState.likedBeers})
+        else if (e.target.value === "liked beers") {
+            if (this.props.userInfo.user.liked_beers) {
+                console.log("beers", this.props.userInfo.user)
+                this.setState(prevState => ({ userHaslikedBeers: !prevState.userHaslikedBeers })
                 )
-            }else{
+            } else {
                 alert("You need to like some beers first!")
             }
         }
-        else{
+        else {
             this.setState({
                 infoValue: e.target.value
             })
@@ -84,6 +83,7 @@ class Main extends React.Component {
 
 
     render = () => {
+
         return (this.props.userInfo.firstTime ?
             (<>
                 <Modal />
@@ -92,49 +92,49 @@ class Main extends React.Component {
             </>)
             :
             (<>
-                <Header> 
-                {/* <button style={{background: "inherit", color: "white", fontSize: "large", borderStyle: "none"}} 
-                onClick={this.handleClick} className="sideBarLinks" 
-                value="liked beers">
-                    liked beers
-                </button> */}
+                <Header>
+                    <button style={{ background: "inherit", color: "white", fontSize: "large", borderStyle: "none" }}
+                        onClick={this.handleClick} className="sideBarLinks"
+                        value="liked beers">
+                        liked beers
+                </button>
                 </Header>
 
                 <SideNavBar onClick={this.handleClick} />
 
-                {this.state.data.length > 0? (
+                {this.state.data.length > 0 ? (
                     <>
-                {this.state.likedBeers? <Card> </Card> : null}
-                <InfoBar info={this.state}>
-                </InfoBar>
+                        {this.state.userHaslikedBeers ? <Card> </Card> : null}
+                        <InfoBar info={this.state}>
+                        </InfoBar>
 
-                <Body>
+                        <Body>
 
-                    <h1 style={{ marginBlockStart: "0em", marginBlockEnd: "0em", color:"white" }}> Hey, {this.props.userInfo.name}! </h1>
-                    <p style={{ color: "grey", marginBlockStart: "0.5em" }}> you might like... </p>
+                            <h1 style={{ marginBlockStart: "0em", marginBlockEnd: "0em", color: "white" }}> Hey, {this.props.userInfo.name}! </h1>
+                            <p style={{ color: "grey", marginBlockStart: "0.5em" }}> you might like... </p>
 
-                    
-                        <Card
-                            beerName={this.state.data[0].name}
-                            brewery={this.state.data[0].brewery.name}
-                            img={this.state.data[0].img_url}> 
-                            <b>Style:</b> {this.state.data[0].style.name}
+
+                            <Card
+                                beerName={this.state.data[0].name}
+                                brewery={this.state.data[0].brewery.name}
+                                img={this.state.data[0].img_url}>
+                                <b>Style:</b> {this.state.data[0].style.name}
+                                <br />
+                                <b>ABV:</b> {this.state.data[0].abv}% </Card>
+
+
                             <br />
-                            <b>ABV:</b> {this.state.data[0].abv}% </Card>
-                    
-
-                    <br />
-                    <button style={{background: "red", fontSize: "large", borderRadius: "10%", color: "white"}}   value="dislike button" onClick={this.handleClick}> NOPE</button>
-                    <button style={{background: "greenyellow", fontSize: "large", borderRadius: "10%", color: "black"}} value="like button" onClick={this.handleClick}>YESSIR</button>
-                    {/* <LikeButton onClick={this.handleClick}/> 
+                            <button style={{ background: "red", fontSize: "large", borderRadius: "10%", color: "white" }} value="dislike button" onClick={this.handleClick}> NOPE</button>
+                            <button style={{ background: "greenyellow", fontSize: "large", borderRadius: "10%", color: "black" }} value="like button" onClick={this.handleClick}>YESSIR</button>
+                            {/* <LikeButton onClick={this.handleClick}/> 
                     <br /> */}
-                </ Body>
-                </>
+                        </ Body>
+                    </>
                 )
-                : 
-                null  
+                    :
+                    null
                 }
-                
+
 
             </>)
         )
@@ -143,35 +143,35 @@ class Main extends React.Component {
     }// end of render 
 
 
-    fetchReccBeers = ()=>{
+    fetchReccBeers = () => {
         let formData = { user_id: this.props.userInfo.id };
 
-            let configObj = {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-                body: JSON.stringify(formData)
-            };
+        let configObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(formData)
+        };
 
-            fetch("http://localhost:3000/reccomended_beers", configObj)
-                .then(res => res.json())
-                .then(reccs => {
-                    if(reccs.length > 1){
-                        this.setState({ data: reccs })
-                    }else{
-                        this.props.zeroBeerRenderQuizAgain()
-                    }
-                })
+        fetch("http://localhost:3000/reccomended_beers", configObj)
+            .then(res => res.json())
+            .then(reccs => {
+                if (reccs.length > 1) {
+                    this.setState({ data: reccs })
+                } else {
+                    this.props.zeroBeerRenderQuizAgain()
+                }
+            })
     }
 
 
 
-    componentDidMount = ()=>{
+    componentDidMount = () => {
         if (this.props.userInfo.firstTime === false) {
             this.fetchReccBeers()
-            
+
         }
 
 

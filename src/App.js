@@ -62,7 +62,7 @@ class App extends React.Component {
               <p>or...</p>
               <SignUp loggedIn={this.loggedInFirstTime} />
 
-            </WhiteCard>
+            </WhiteCard>x
             </>
           )}
       </div>
