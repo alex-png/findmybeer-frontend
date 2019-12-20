@@ -3,10 +3,11 @@ import React from 'react'
 import Modal from '../Components/Modal'
 import ModalCard from '../Components/ModalCard.js'
 import Body from '../Components/Body.js'
-import Header from '../Components/Header.js'
 import SideNavBar from '../Components/SideNavBar.js'
 import InfoBar from '../Components/InfoBar.js'
 import Card from '../Components/Card.js'
+
+
 // import LikeButton from '../Components/LikeButton'
 // import DislikeButton from '../Components/DislikeButton'
 
@@ -65,15 +66,6 @@ class Main extends React.Component {
                 .then(this.state.data.length === 1 ? this.fetchReccBeers() : this.setState(prevState => ({ data: prevState.data.slice(1) })))
 
         }
-        else if (e.target.value === "liked beers") {
-            if (this.props.userInfo.user.liked_beers) {
-                console.log("beers", this.props.userInfo.user)
-                this.setState(prevState => ({ userHaslikedBeers: !prevState.userHaslikedBeers })
-                )
-            } else {
-                alert("You need to like some beers first!")
-            }
-        }
         else {
             this.setState({
                 infoValue: e.target.value
@@ -92,21 +84,13 @@ class Main extends React.Component {
             </>)
             :
             (<>
-                <Header>
-                    <button style={{ background: "inherit", color: "white", fontSize: "large", borderStyle: "none" }}
-                        onClick={this.handleClick} className="sideBarLinks"
-                        value="liked beers">
-                        liked beers
-                </button>
-                </Header>
-
                 <SideNavBar onClick={this.handleClick} />
 
                 {this.state.data.length > 0 ? (
                     <>
-                        {this.state.userHaslikedBeers ? <Card> </Card> : null}
                         <InfoBar info={this.state}>
                         </InfoBar>
+                        {this.state.userHaslikedBeers ? <Card> </Card> : null}
 
                         <Body>
 
@@ -171,10 +155,7 @@ class Main extends React.Component {
     componentDidMount = () => {
         if (this.props.userInfo.firstTime === false) {
             this.fetchReccBeers()
-
         }
-
-
     }// end of comp did mount
 
 } //end of class

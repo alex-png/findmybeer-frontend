@@ -4,6 +4,11 @@ import SignUp from './Components/SignUp.js'
 import LogIn from './Components/LogIn.js'
 import Main from './Containers/Main.js'
 import WhiteCard from './Components/WhiteCard';
+import Header from './Components/Header.js'
+import MyBeers from './Components/MyBeers.js'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+
 import './Containers/Main.css'
 class App extends React.Component {
   state = ({
@@ -11,49 +16,64 @@ class App extends React.Component {
     id: 0,
     name: "",
     firstTime: false,
-    user: null 
-    })
+    user: null
+  })
 
   loggedInFirstTime = (data) => {
     this.setState(prevState => ({
-      loggedIn: !prevState.loggedIn, 
-      id: data.id, 
-      name: data.name, 
+      loggedIn: !prevState.loggedIn,
+      id: data.id,
+      name: data.name,
       firstTime: true
     }))
   }
 
   loggedInReturning = (data) => {
     console.log(data)
-    this.setState(prevState => ({ 
+    this.setState(prevState => ({
       loggedIn: !prevState.loggedIn,
-      id: data.id, 
-      name: data.name, 
-      firstTime: false,  
-      user: data}))
+      id: data.id,
+      name: data.name,
+      firstTime: false,
+      user: data
+    }))
   }
 
-  firstTimeComplete = () =>{
-    this.setState( prevState => ({firstTime: !prevState.firstTime})  )  
+  firstTimeComplete = () => {
+    this.setState(prevState => ({ firstTime: !prevState.firstTime }))
   }
 
   zeroBeerRenderQuizAgain = () => {
-    this.setState(prevState => ({firstTime: !prevState.firstTime}) )
+    this.setState(prevState => ({ firstTime: !prevState.firstTime }))
   }
 
 
   render = () => {
 
     return (
+
+
       <div className="App" >
         {this.state.loggedIn ? (
-          <Main userInfo={this.state} firstTimeComplete={this.firstTimeComplete}  zeroBeerRenderQuizAgain={this.zeroBeerRenderQuizAgain}  />
+          <>
+            <Router>
+              <Header />
+
+              <Route exact path='/mybeers' component={MyBeers} loggedIn={this.state.loggedIn} />
+              <Route exact path="/" render={(props) => <Main userInfo={this.state} firstTimeComplete={this.firstTimeComplete} zeroBeerRenderQuizAgain={this.zeroBeerRenderQuizAgain}/>} />
+
+            </Router>
+          </>
+
+
+
+
         )
           :
           (<>
-            <div className="header"> 
-            <img src="/logo.png"  style={{ height: "2.3em", borderRadius: ".2em", marginLeft: ".2em"}} alt="logo" />
-            FIND<h1 style={{fontSize: "1.3em"}}>MY</h1>BEER
+            <div className="header">
+              <img src="/logo.png" style={{ height: "2.3em", borderRadius: ".2em", marginLeft: ".2em" }} alt="logo" />
+              FIND<h1 style={{ fontSize: "1.3em" }}>MY</h1>BEER
             </div>
 
             <WhiteCard >
@@ -62,8 +82,8 @@ class App extends React.Component {
               <p>or...</p>
               <SignUp loggedIn={this.loggedInFirstTime} />
 
-            </WhiteCard>x
-            </>
+            </WhiteCard>
+          </>
           )}
       </div>
     );
@@ -79,7 +99,7 @@ class App extends React.Component {
   //   // For body
   //   document.body.appendChild(script);
   // }
- 
+
 
 
 }//end of App

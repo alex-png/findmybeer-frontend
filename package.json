@@ -5,7 +5,9 @@
   "dependencies": {
     "@gumgum/react-script-tag": "^0.0.3",
     "react": "^16.12.0",
+    "react-browser-router": "^2.1.2",
     "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "react-select": "^3.0.8"
   },
