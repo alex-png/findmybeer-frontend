@@ -20,4 +20,8 @@ export default class MyBeers extends React.Component {
         )
     }
 
+    componentDidMount = () =>{
+        // fetch users shit
+    }
+
  } //end of MyBeers
