@@ -1,5 +1,7 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the front end for FindMyBeer! In order to run this, the backend needs to be running first (run backend as http://localhost:3000/).
+Simply yarn start and have fun!
 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 ## Available Scripts
 
 In the project directory, you can run:
